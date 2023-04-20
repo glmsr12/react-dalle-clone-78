@@ -11,6 +11,10 @@ function App() {
           Start with a detailed description{' '}
           <span className="surprise">Surprise me</span>
         </p>
+        <div className="input-container">
+          <input placeholder="An amazing view of redwood trees..." />
+          <button>Generate</button>
+        </div>
       </section>
       <section className="image-section"></section>
     </div>
