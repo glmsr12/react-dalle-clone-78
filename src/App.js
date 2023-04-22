@@ -5,16 +5,16 @@ function App() {
     'A watermelon swimming in creek',
   ];
 
-  const getImages = async () => {
+  async function getImages() {
     try {
       const options = {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           message: 'BLUGH',
         }),
-        headers: {
-          'Content-type': 'application/json',
-        },
       };
       const response = await fetch('http://localhost:8000/images', options);
       const data = await response.json();
@@ -22,7 +22,7 @@ function App() {
     } catch (error) {
       console.error(error);
     }
-  };
+  }
 
   return (
     <div className="App">
@@ -33,7 +33,7 @@ function App() {
         </p>
         <div className="input-container">
           <input placeholder="An amazing view of redwood trees..." />
-          <button>Generate</button>
+          <button onClick={getImages}>Generate</button>
         </div>
       </section>
       <section className="image-section"></section>
