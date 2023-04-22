@@ -5,16 +5,17 @@ function App() {
     'A watermelon swimming in creek',
   ];
 
-  async function getImages() {
+  const getImages = async () => {
     try {
       const options = {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+
         body: JSON.stringify({
           message: 'BLUGH',
         }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       };
       const response = await fetch('http://localhost:8000/images', options);
       const data = await response.json();
@@ -22,7 +23,7 @@ function App() {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   return (
     <div className="App">

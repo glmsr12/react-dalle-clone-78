@@ -17,8 +17,8 @@ app.post('/images', async (req, res) => {
   try {
     const response = await openai.createImage({
       prompt: 'A cute baby sea otter',
-      n: 2,
-      size: '1024x1024',
+      n: 6,
+      size: '256x256',
     });
     console.log(response.data.data);
     res.send(response.data.data);
