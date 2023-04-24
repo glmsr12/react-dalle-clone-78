@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 function App() {
+  const [images, setImages] = useState(null);
+  const [value, setValue] = useState(null);
   const surpriseOptions = [
     'A red fox crossing a road',
     'A flock of crows flying over a trash can',
@@ -20,6 +24,7 @@ function App() {
       const response = await fetch('http://localhost:8000/images', options);
       const data = await response.json();
       console.log(data);
+      setImages(data);
     } catch (error) {
       console.error(error);
     }
@@ -33,11 +38,23 @@ function App() {
           <span className="surprise">Surprise me</span>
         </p>
         <div className="input-container">
-          <input placeholder="An amazing view of redwood trees..." />
+          <input
+            placeholder="An amazing view of redwood trees..."
+            onChange={(e) => setValue(e.target.value)}
+          />
           <button onClick={getImages}>Generate</button>
         </div>
       </section>
-      <section className="image-section"></section>
+      <section className="image-section">
+        {images?.map((image, index) => (
+          // eslint-disable-next-line jsx-a11y/img-redundant-alt
+          <img
+            key={index}
+            src={image.url}
+            alt={`Generated image of ${value}`}
+          />
+        ))}
+      </section>
     </div>
   );
 }
