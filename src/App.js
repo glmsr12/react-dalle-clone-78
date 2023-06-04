@@ -30,6 +30,8 @@ function App() {
     }
   };
 
+  console.log(value);
+
   return (
     <div className="App">
       <section className="search-section">
@@ -39,6 +41,7 @@ function App() {
         </p>
         <div className="input-container">
           <input
+            value={value}
             placeholder="An amazing view of redwood trees..."
             onChange={(e) => setValue(e.target.value)}
           />
@@ -46,10 +49,9 @@ function App() {
         </div>
       </section>
       <section className="image-section">
-        {images?.map((image, index) => (
-          // eslint-disable-next-line jsx-a11y/img-redundant-alt
+        {images?.map((image, _index) => (
           <img
-            key={index}
+            key={_index}
             src={image.url}
             alt={`Generated image of ${value}`}
           />
